@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.list.R
 import com.example.list.data.Task
+import com.example.list.screens.MainScreenDirections
 
 class TaskAdapter: RecyclerView.Adapter<TaskAdapter.ViewHolder>(){
     private var taskList = emptyList<Task>()
@@ -25,8 +27,8 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.ViewHolder>(){
         holder.itemView.findViewById<TextView>(R.id.task_text).text = currentItem.title
 
         holder.itemView.findViewById<View>(R.id.the_task).setOnClickListener {
-            //val action = M.actionMainScreenToUpdateTask3(currentItem)
-            //holder.itemView.findNavController().navigate(action)
+            val action = MainScreenDirections.actionMainScreenToUpdateTask(currentItem)
+            holder.itemView.findNavController().navigate(action)
         }
     }
 
