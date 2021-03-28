@@ -10,7 +10,7 @@ import com.example.list.R
 import com.example.list.data.Task
 import com.example.list.screens.MainScreenDirections
 
-class TaskAdapter: RecyclerView.Adapter<TaskAdapter.ViewHolder>(){
+class TaskAdapter: RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     private var taskList = emptyList<Task>()
 
     class ViewHolder(item: View): RecyclerView.ViewHolder(item) {
