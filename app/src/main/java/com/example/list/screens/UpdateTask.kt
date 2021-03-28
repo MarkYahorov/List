@@ -10,13 +10,15 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.list.R
+import com.example.list.data.Task
 import com.example.list.data.TaskViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class UpdateTask : Fragment() {
 
-    //private val args by navArgs<Updat>()
+    private val args by navArgs<UpdateTaskArgs>()
     private lateinit var title: EditText
     private lateinit var description: EditText
     private lateinit var updateBtn: FloatingActionButton
@@ -30,7 +32,6 @@ class UpdateTask : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_update_task, container, false)
-
         title = view.findViewById(R.id.title_update)
         description = view.findViewById(R.id.description_update)
         updateBtn = view.findViewById(R.id.finally_update)
@@ -41,8 +42,8 @@ class UpdateTask : Fragment() {
             deleteTask()
         }
 
-        //title.setText(args.currentTask.title)
-        //description.setText(args.currentTask.detection)
+        title.setText(args.currentTask.title)
+        description.setText(args.currentTask.detection)
         updateBtn.setOnClickListener {
             updateTask()
         }
@@ -55,8 +56,8 @@ class UpdateTask : Fragment() {
         val descriptionUpDate = description.text.toString()
 
         if (inputCheck(titleUpDate, descriptionUpDate)){
-            //val updateTask = Task(args.currentTask.id, titleUpDate, descriptionUpDate, false)
-            // mTaskViewModel.updateTask(updateTask)
+            val updateTask = Task(args.currentTask.id, titleUpDate, descriptionUpDate, false)
+            mTaskViewModel.updateTask(updateTask)
             findNavController().navigate(R.id.action_updateTask_to_mainScreen)
         }
     }
@@ -70,12 +71,12 @@ class UpdateTask : Fragment() {
     private fun deleteTask(){
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Yes") { _,_  ->
-            //mTaskViewModel.deleteTask(args.currentTask)
+            mTaskViewModel.deleteTask(args.currentTask)
             findNavController().navigate(R.id.action_updateTask_to_mainScreen)
         }
         builder.setNegativeButton("No") { _,_ -> }
-        // builder.setTitle("Delete ${args.currentTask.title}?")
-        //builder.setMessage("Are you sure you want to delete ${args.currentTask.title}?")
+        builder.setTitle("Delete ${args.currentTask.title}?")
+        builder.setMessage("Are you sure you want to delete ${args.currentTask.title}?")
         builder.show()
 
     }
