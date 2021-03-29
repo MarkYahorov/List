@@ -25,7 +25,7 @@ abstract class TodoDataBase : RoomDatabase() {
                     context.applicationContext,
                     TodoDataBase::class.java,
                     "todo_database"
-                ).allowMainThreadQueries().build()
+                ).build()
                 INSTANCE = instance
                 return instance
             }
