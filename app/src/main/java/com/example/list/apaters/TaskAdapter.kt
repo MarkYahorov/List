@@ -10,15 +10,15 @@ import com.example.list.R
 import com.example.list.data.Task
 import com.example.list.screens.MainScreenDirections
 
-class TaskAdapter: RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     private var taskList = emptyList<Task>()
 
-    class ViewHolder(item: View): RecyclerView.ViewHolder(item) {
+    class ViewHolder(item: View) : RecyclerView.ViewHolder(item) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.task_item, parent,false)
+            .inflate(R.layout.task_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -34,7 +34,7 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = taskList.size
 
-    fun setData(task: List<Task>){
+    fun setData(task: List<Task>) {
         this.taskList = task
         notifyDataSetChanged()
     }

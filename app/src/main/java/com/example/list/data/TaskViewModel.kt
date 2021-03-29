@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TaskViewModel(application: Application): AndroidViewModel(application) {
+class TaskViewModel(application: Application) : AndroidViewModel(application) {
 
     val getAllData: LiveData<List<Task>>
     private val repository: TaskRepository
@@ -18,52 +18,27 @@ class TaskViewModel(application: Application): AndroidViewModel(application) {
         getAllData = repository.getAllLiveData
     }
 
-    fun addTask(task: Task){
-        viewModelScope.launch(Dispatchers.IO){
+    fun addTask(task: Task) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.addTask(task)
         }
     }
 
-    fun updateTask(task: Task){
-        viewModelScope.launch(Dispatchers.IO){
+    fun updateTask(task: Task) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.updateTask(task)
         }
     }
 
-    fun deleteTask(task: Task){
+    fun deleteTask(task: Task) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteTask(task)
         }
     }
 
-    fun deleteAllTasks(){
+    fun deleteAllTasks() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteAllTasks()
         }
     }
-
-    //subTusk functions
-
-    val getAllSubData: LiveData<List<SubTusk>>
-    private val repositorySubTask: SubTaskRepository
-
-    init {
-        val subTaskDao = TodoDataBase.getDatabase(application).subTaskDao()
-        repositorySubTask = SubTaskRepository(subTaskDao)
-        getAllSubData = repositorySubTask.getAllSubTaskDao
-    }
-
-    fun addSubTask(subTask: SubTusk) {
-        repositorySubTask.addSubTask(subTask)
-    }
-
-    fun updateSubTask(subTask: SubTusk) {
-        repositorySubTask.updateSubTask(subTask)
-    }
-
-    fun deleteSubTask(subTask: SubTusk) {
-        repositorySubTask.deleteSubTask(subTask)
-    }
-
-
 }

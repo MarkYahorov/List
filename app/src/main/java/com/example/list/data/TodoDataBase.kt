@@ -5,11 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Task::class, SubTusk::class], version = 1, exportSchema = false)
-abstract class TodoDataBase: RoomDatabase() {
+@Database(entities = [Task::class], version = 1, exportSchema = false)
+abstract class TodoDataBase : RoomDatabase() {
 
     abstract fun taskDao(): TaskDao
-    abstract fun subTaskDao(): SubTaskDao
 
 
     companion object {
@@ -26,7 +25,7 @@ abstract class TodoDataBase: RoomDatabase() {
                     context.applicationContext,
                     TodoDataBase::class.java,
                     "todo_database"
-                ).build()
+                ).allowMainThreadQueries().build()
                 INSTANCE = instance
                 return instance
             }

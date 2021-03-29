@@ -6,19 +6,19 @@ class TaskRepository(private val taskDao: TaskDao) {
 
     val getAllLiveData: LiveData<List<Task>> = taskDao.getAllLiveData()
 
-    fun  addTask(task: Task){
+    fun addTask(task: Task) {
         taskDao.addTask(task)
     }
 
-    fun updateTask(task: Task){
+    fun updateTask(task: Task) {
         taskDao.updateTask(task)
     }
 
-    fun deleteTask(task: Task){
+    fun deleteTask(task: Task) {
         taskDao.deleteTask(task)
     }
 
-    fun deleteAllTasks(){
+    fun deleteAllTasks() {
         taskDao.deleteAllTasks()
     }
 }

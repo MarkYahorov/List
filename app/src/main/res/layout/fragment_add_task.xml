@@ -4,51 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/all_background"
     tools:context=".screens.AddScreen">
 
     <TextView
         android:id="@+id/add_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Task"
-        android:textSize="50sp"
+        style="@style/main_title_text"
+        android:text="@string/add_task"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/title"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/title_container"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="28dp"
-        android:hint="Enter you task"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/radius_edit_text"
         app:layout_constraintTop_toBottomOf="@+id/add_text"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints">
 
-    <EditText
-        android:id="@+id/description"
+        <EditText
+            android:id="@+id/title"
+            style="@style/title_style"
+            android:hint="@string/enter_you_task"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="28dp"
-        android:hint="Please more description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/radius_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/title_container"
+        tools:layout_editor_absoluteX="15dp">
+
+        <EditText
+            android:id="@+id/description"
+            style="@style/description_style"
+            android:hint="@string/please_more_description"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/finally_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:clickable="true"
+        style="@style/fab"
         android:src="@drawable/ic_baseline_done_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

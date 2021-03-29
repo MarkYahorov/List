@@ -27,7 +27,6 @@ class MainScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_main_screen, container, false)
 
         recyclerView = view.findViewById(R.id.recycler_tasks)
@@ -37,6 +36,7 @@ class MainScreen : Fragment() {
         val adapter = TaskAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.hasFixedSize()
 
         floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_mainScreen_to_addTask)
@@ -55,10 +55,10 @@ class MainScreen : Fragment() {
 
     private fun deleteAll() {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setPositiveButton("Yes") { _,_  ->
+        builder.setPositiveButton("Yes") { _, _ ->
             mTaskViewModel.deleteAllTasks()
         }
-        builder.setNegativeButton("No") { _,_ -> }
+        builder.setNegativeButton("No") { _, _ -> }
         builder.setTitle("Delete everything?")
         builder.setMessage("Are you sure you want to delete everything?")
         builder.show()

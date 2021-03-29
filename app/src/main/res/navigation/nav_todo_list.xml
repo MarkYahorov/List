@@ -8,7 +8,7 @@
         android:id="@+id/mainScreen"
         android:name="com.example.list.screens.MainScreen"
         android:label="fragment_main_screen"
-        tools:layout="@layout/fragment_main_screen" >
+        tools:layout="@layout/fragment_main_screen">
         <action
             android:id="@+id/action_mainScreen_to_addTask"
             app:destination="@id/addTask" />
@@ -20,7 +20,7 @@
         android:id="@+id/addTask"
         android:name="com.example.list.screens.AddScreen"
         android:label="fragment_add_task"
-        tools:layout="@layout/fragment_add_task" >
+        tools:layout="@layout/fragment_add_task">
         <action
             android:id="@+id/action_addTask_to_mainScreen"
             app:destination="@id/mainScreen" />
@@ -29,36 +29,12 @@
         android:id="@+id/updateTask"
         android:name="com.example.list.screens.UpdateTask"
         android:label="fragment_update_task"
-        tools:layout="@layout/fragment_update_task" >
+        tools:layout="@layout/fragment_update_task">
         <action
             android:id="@+id/action_updateTask_to_mainScreen"
             app:destination="@id/mainScreen" />
         <argument
             android:name="currentTask"
             app:argType="com.example.list.data.Task" />
-        <action
-            android:id="@+id/action_updateTask_to_updateSubTask"
-            app:destination="@id/updateSubTask" />
-        <action
-            android:id="@+id/action_updateTask_to_addSubTask"
-            app:destination="@id/addSubTask" />
-    </fragment>
-    <fragment
-        android:id="@+id/addSubTask"
-        android:name="com.example.list.AddSubTask"
-        android:label="fragment_add_sub_task"
-        tools:layout="@layout/fragment_add_sub_task" >
-        <action
-            android:id="@+id/action_addSubTask_to_updateTask"
-            app:destination="@id/updateTask" />
-    </fragment>
-    <fragment
-        android:id="@+id/updateSubTask"
-        android:name="com.example.list.UpdateSubTask"
-        android:label="fragment_update_sub_task"
-        tools:layout="@layout/fragment_update_sub_task" >
-        <action
-            android:id="@+id/action_updateSubTask_to_updateTask"
-            app:destination="@id/updateTask" />
     </fragment>
 </navigation>

@@ -10,7 +10,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.list.AddSubTask
 import com.example.list.R
 import com.example.list.data.Task
 import com.example.list.data.TaskViewModel
@@ -50,7 +49,7 @@ class AddScreen : Fragment() {
         if (inputCheck(titleText, descriptionText)) {
             val task = Task(0, titleText, descriptionText, false)
             mTaskViewModel.addTask(task)
-            Toast.makeText(requireContext(),"Is Done", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Is Done", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_addTask_to_mainScreen)
         }
     }
